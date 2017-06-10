@@ -7,26 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace proyecto.Cine.DAL
+namespace proyecto.Cine.Logica.Modelo
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Versione
+    public partial class Genero
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Versione()
+        public Genero()
         {
-            this.Carteleras = new HashSet<Cartelera>();
-            this.Reservas = new HashSet<Reserva>();
+            this.Peliculas = new HashSet<Pelicula>();
         }
     
-        public int IdVersion { get; set; }
+        public int IdGenero { get; set; }
         public string Nombre { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cartelera> Carteleras { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reserva> Reservas { get; set; }
+        public virtual ICollection<Pelicula> Peliculas { get; set; }
     }
 }

@@ -41,6 +41,10 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Compact.4.0.8876.1\lib\net40\System.Data.SqlServerCe.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -51,53 +55,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Calificacione.cs">
-      <DependentUpon>CineDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Cartelera.cs">
-      <DependentUpon>CineDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="CineDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CineDB.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CineDB.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CineDB.tt</DependentUpon>
     </Compile>
     <Compile Include="CineDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CineDB.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Genero.cs">
-      <DependentUpon>CineDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Pelicula.cs">
-      <DependentUpon>CineDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reserva.cs">
-      <DependentUpon>CineDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Sede.cs">
-      <DependentUpon>CineDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>CineDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TiposDocumento.cs">
-      <DependentUpon>CineDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Usuario.cs">
-      <DependentUpon>CineDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Versione.cs">
-      <DependentUpon>CineDB.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Repositorio\UsuarioDALImple.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="CineDB.edmx">
@@ -118,15 +87,17 @@
       <DependentUpon>CineDB.edmx</DependentUpon>
       <LastGenOutput>CineDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="CineDB.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CineDB.edmx</DependentUpon>
-      <LastGenOutput>CineDB.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\proyecto.Cine.Logica\proyecto.Cine.Logica.csproj">
+      <Project>{f6ff0230-4ca0-425e-885a-d7338c15ce28}</Project>
+      <Name>proyecto.Cine.Logica</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

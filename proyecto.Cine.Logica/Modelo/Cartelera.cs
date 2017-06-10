@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace proyecto.Cine.DAL
+namespace proyecto.Cine.Logica.Modelo
 {
     using System;
     using System.Collections.Generic;

@@ -9,10 +9,11 @@
 
 namespace proyecto.Cine.DAL
 {
+    using Logica.Modelo;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class CineConexion : DbContext
     {
         public CineConexion()

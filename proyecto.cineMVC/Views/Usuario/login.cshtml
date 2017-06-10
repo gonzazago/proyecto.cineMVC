@@ -1,0 +1,46 @@
+﻿@model proyecto.cineMVC.Models.UsuarioModel
+@{
+    ViewBag.Title = "login";
+
+    Layout = "~/Views/Shared/_LayoutBase.cshtml";
+}
+
+<h2>login</h2>
+<span>
+    @if (ViewBag.Mensaje != "")
+    {
+        @ViewBag.Mensaje;
+    }
+
+</span>
+
+<div class="row">
+    <form action="/Usuario/login" class="col s12" method="Post">
+        <fieldset>
+            <legend>Nuevo Ejercicio</legend>
+            <div class="row">
+                <div class="row">
+                    <div class="input-field col s6">
+                        @Html.LabelFor(x => x.NombreUsuario) @Html.TextBoxFor(x => x.NombreUsuario)
+                        @Html.ValidationMessageFor(x => x.NombreUsuario)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="row">
+                    <div class="input-field col s6">
+                        @Html.LabelFor(x => x.Password) @Html.TextBoxFor(x => x.Password)
+                        @Html.ValidationMessageFor(x => x.Password)
+                    </div>
+                </div>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit">
+                Iniciar Sesion
+                <i class="material-icons right">send</i>
+            </button>
+        </fieldset>
+
+    </form>
+
+
+
