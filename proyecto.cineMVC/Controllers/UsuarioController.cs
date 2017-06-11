@@ -30,7 +30,7 @@ namespace proyecto.cineMVC.Controllers
             usr.Password = u.Password;
             if (!ModelState.IsValid || !usrMng.verificarUsuario(usr))
             {
-                ViewBag.Mensaje = "Usuario / Contraseña invalida";
+                TempData["Mensaje"] = "Usuario / Contraseña invalida";
                 return RedirectToAction("login", "Usuario");
                 
             }

@@ -4782,7 +4782,7 @@ small {
 }
 
 .tabs .tab a {
-  color: #ee6e73;
+  color: #1976D2;
   display: block;
   width: 100%;
   height: 100%;
@@ -4792,7 +4792,7 @@ small {
 }
 
 .tabs .tab a:hover {
-  color: #f9c9cb;
+  color: #1976D2;
 }
 
 .tabs .tab.disabled a {

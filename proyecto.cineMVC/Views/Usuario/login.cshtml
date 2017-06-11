@@ -5,19 +5,19 @@
     Layout = "~/Views/Shared/_LayoutBase.cshtml";
 }
 
-<h2>login</h2>
+<h2>Para poder ingresar debe Iniciar Sesion</h2>
 <span>
-    @if (ViewBag.Mensaje != "")
+    @if (TempData["Mensaje"] != "")
     {
-        @ViewBag.Mensaje;
+        @TempData["Mensaje"];
     }
 
 </span>
 
-<div class="row">
+<div class="row teal lighten-5">
     <form action="/Usuario/login" class="col s12" method="Post">
         <fieldset>
-            <legend>Nuevo Ejercicio</legend>
+
             <div class="row">
                 <div class="row">
                     <div class="input-field col s6">

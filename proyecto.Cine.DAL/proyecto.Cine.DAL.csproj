@@ -66,6 +66,10 @@
       <DependentUpon>CineDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorio\CarteleraDALImple.cs" />
+    <Compile Include="Repositorio\PeliculaDALImple.cs" />
+    <Compile Include="Repositorio\ReservaDALImple.cs" />
+    <Compile Include="Repositorio\SedeDALImple.cs" />
     <Compile Include="Repositorio\UsuarioDALImple.cs" />
   </ItemGroup>
   <ItemGroup>

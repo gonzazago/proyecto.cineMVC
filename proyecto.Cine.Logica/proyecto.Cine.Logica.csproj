@@ -56,7 +56,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\ICarteleraServicio.cs" />
+    <Compile Include="Interfaces\IPeliculaServicio.cs" />
+    <Compile Include="Interfaces\IReservaServicio.cs" />
     <Compile Include="Interfaces\IUsuariosServicios.cs" />
+    <Compile Include="Interfaces\ISedeServicios.cs" />
     <Compile Include="Modelo\Calificacione.cs">
       <DependentUpon>CineDB.tt</DependentUpon>
     </Compile>

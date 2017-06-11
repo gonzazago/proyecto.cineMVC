@@ -1,0 +1,30 @@
+﻿@model IEnumerable<proyecto.Cine.Logica.Modelo.Sede>
+@{
+    ViewBag.Title = "Sedes";
+    Layout = "~/Views/Shared/_LayoutAdministrar.cshtml";
+}
+
+<h2>Sedes</h2>
+<a href=""
+<table class="highlight">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Nombre)</th>
+            <th>@Html.DisplayNameFor(model => model.Direccion)</th>
+            <th>@Html.DisplayNameFor(model => model.PrecioGeneral)</th>
+        </tr>
+@foreach (var s in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelS => s.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelS => s.Direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelS => s.PrecioGeneral)
+        </td>
+    </tr>
+}
+
+</table>
+
