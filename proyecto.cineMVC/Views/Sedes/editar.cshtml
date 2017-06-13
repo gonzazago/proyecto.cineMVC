@@ -1,16 +1,22 @@
-﻿@model proyecto.cineMVC.Models.SedeModel
+﻿@model proyecto.Cine.Logica.Modelo.Sede
 @{
-    ViewBag.Title = "nuevaSede";
+    ViewBag.Title = "editar";
     Layout = "~/Views/Shared/_LayoutAdministrar.cshtml";
 }
 
-<h2>Agregar nueva Sede</h2>
-
+<h2>Editar Sede</h2>
 
 <div class="row">
-    <form action="/Sedes/nuevaSede" class="col s12" method="Post">
+    <form action="/Sedes/editar" class="col s12" method="Post">
         <fieldset>
 
+            <div class="row">
+                <div class="row">
+                    <div class="input-field col s6">
+                        @Html.HiddenFor(x => x.IdSede)
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="row">
                     <div class="input-field col s6">
@@ -36,7 +42,7 @@
                 </div>
             </div>
             <button class="btn waves-effect waves-light" type="submit">
-                Agregar Sede
+                Guardar Cambios
                 <i class="material-icons right">send</i>
             </button>
         </fieldset>

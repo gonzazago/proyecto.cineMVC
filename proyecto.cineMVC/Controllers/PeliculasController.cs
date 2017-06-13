@@ -16,6 +16,7 @@ namespace proyecto.cineMVC.Controllers
 
         public ActionResult AgregarPelicula()
         {
+            
             return View();
         }
     }

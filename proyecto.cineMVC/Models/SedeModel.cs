@@ -15,7 +15,7 @@ namespace proyecto.cineMVC.Models
         [Required(ErrorMessage ="Debe introducir una direccion")]
         public string Direccion { get; set; }
         [Required(ErrorMessage = "Debe ingresar el precio/El precio debe ser mayor a Cero ")]
-        [Range(1,99999)]
+        [Range(1.00,99999.00)]
         public decimal PrecioGeneral { get; set; }
     }
 }

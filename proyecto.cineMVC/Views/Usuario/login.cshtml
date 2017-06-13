@@ -14,7 +14,7 @@
 
 </span>
 
-<div class="row teal lighten-5">
+<div class="row">
     <form action="/Usuario/login" class="col s12" method="Post">
         <fieldset>
 
@@ -29,7 +29,7 @@
             <div class="row">
                 <div class="row">
                     <div class="input-field col s6">
-                        @Html.LabelFor(x => x.Password) @Html.TextBoxFor(x => x.Password)
+                        @Html.LabelFor(x => x.Password) @Html.PasswordFor(x => x.Password)
                         @Html.ValidationMessageFor(x => x.Password)
                     </div>
                 </div>
@@ -42,5 +42,5 @@
 
     </form>
 
-
+ </div>
 

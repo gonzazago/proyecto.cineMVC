@@ -1,14 +1,12 @@
-﻿@model proyecto.cineMVC.Models.SedeModel
+﻿@model proyecto.Cine.Logica.Modelo.Pelicula
 @{
-    ViewBag.Title = "nuevaSede";
+    ViewBag.Title = "AgregarPelicula";
     Layout = "~/Views/Shared/_LayoutAdministrar.cshtml";
 }
 
-<h2>Agregar nueva Sede</h2>
-
-
+<h2>AgregarPelicula</h2>
 <div class="row">
-    <form action="/Sedes/nuevaSede" class="col s12" method="Post">
+    <form action="/Pelicula/AgregarPelicula" class="col s12" method="Post">
         <fieldset>
 
             <div class="row">
@@ -22,7 +20,7 @@
             <div class="row">
                 <div class="row">
                     <div class="input-field col s6">
-                        @Html.LabelFor(x => x.Direccion) @Html.TextBoxFor(x => x.Direccion)
+                        @Html.LabelFor(x => x.Duracion) @Html.TextBoxFor(x => x.Duracion)
                         @Html.ValidationMessageFor(x => x.Direccion)
                     </div>
                 </div>
@@ -36,7 +34,7 @@
                 </div>
             </div>
             <button class="btn waves-effect waves-light" type="submit">
-                Agregar Sede
+                Agregar Pelicula
                 <i class="material-icons right">send</i>
             </button>
         </fieldset>

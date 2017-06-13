@@ -5,7 +5,14 @@
 }
 
 <h2>Sedes</h2>
-<a href=""
+<span>
+    @if (TempData["Mjs"] != "")
+    {
+        @TempData["Mjs"];
+    }
+    <br />
+</span>
+<a href="/Sedes/nuevaSede" class ="waves-effect waves-light btn"><i class="material-icons right">add</i>Nueva Sede</a>
 <table class="highlight">
         <tr>
             <th>@Html.DisplayNameFor(model => model.Nombre)</th>
@@ -22,6 +29,12 @@
         </td>
         <td>
             @Html.DisplayFor(modelS => s.PrecioGeneral)
+        </td>
+        <td>
+            @Html.DisplayFor(modelS => s.IdSede)
+        </td>
+        <td>
+            @Html.ActionLink("Editar","editar", new {id = s.IdSede})
         </td>
     </tr>
 }

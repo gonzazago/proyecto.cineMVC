@@ -173,6 +173,7 @@
     <Compile Include="Models\CarteleraMetadata.cs" />
     <Compile Include="Models\ClasificacionesModel.cs" />
     <Compile Include="Models\GeneroModel.cs" />
+    <Compile Include="Models\Pelicula.cs" />
     <Compile Include="Models\PeliculaModel.cs" />
     <Compile Include="Models\ReservaModel.cs" />
     <Compile Include="Models\SedeModel.cs" />
@@ -204,6 +205,8 @@
     <Content Include="Views\Peliculas\Peliculas.cshtml" />
     <Content Include="Views\Administrar\Reportes.cshtml" />
     <Content Include="Views\Sedes\nuevaSede.cshtml" />
+    <Content Include="Views\Sedes\editar.cshtml" />
+    <Content Include="Views\Peliculas\AgregarPelicula.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

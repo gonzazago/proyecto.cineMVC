@@ -11,7 +11,8 @@ namespace proyecto.Cine.Logica.Interfaces
     {
         void agregarSede(Sede s);
         List<Sede> listarSedes();
-        //void editarSede(Sede s);
+        Sede buscarSede(int? id);
+        void editarSede(Sede s, int id);
         void eliminarSede(int id);
 
     }

@@ -24,13 +24,22 @@ namespace proyecto.Cine.DAL.Repositorio
             List<Sede> s = ctx.Sedes.ToList();
             return s;
         }
-        
-        //public Sede editarSede(Sede s)
-        //{
-        //    ctx.
+        public Sede buscarSede(int? id)
+        {
+            Sede s = ctx.Sedes.Find(id);
+            return s;
+        }
 
-        //    return s;
-        //}
+        public void editarSede(Sede s, int id)
+        {
+            var sedit = new Sede { IdSede = id};
+            ctx.Sedes.Attach(sedit);
+            sedit.Nombre = s.Nombre;
+            sedit.PrecioGeneral = s.PrecioGeneral;
+            sedit.Direccion = s.Direccion;            
+            ctx.SaveChanges();
+
+        }
 
         public void eliminarSede(int id)
         {
