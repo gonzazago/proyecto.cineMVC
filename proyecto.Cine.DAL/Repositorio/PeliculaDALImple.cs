@@ -26,6 +26,7 @@ namespace proyecto.Cine.DAL.Repositorio
 
         public void guardarPeliculas(Pelicula p)
         {
+            p.FechaCarga = DateTime.Now;
             ctx.Peliculas.Add(p);
             ctx.SaveChanges();
         }
@@ -43,6 +44,7 @@ namespace proyecto.Cine.DAL.Repositorio
         {
             var pelicula = ctx.Peliculas.Find(id);
             ctx.Peliculas.Remove(pelicula);
+            ctx.SaveChanges();
         }
         public void editarPelicula(Pelicula p, int id)
         {
