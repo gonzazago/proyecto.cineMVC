@@ -1,0 +1,60 @@
+﻿@model IEnumerable<proyecto.Cine.Logica.Modelo.Cartelera>
+@{
+    ViewBag.Title = "ReservarPelicula";
+    Layout = "~/Views/Shared/_LayoutAdministrar.cshtml";
+}
+
+<h2>Reservar ON-LINE - Elegir funci&oacute;n</h2>
+
+<h5>Pel&iacute;cula: @ViewBag.NombrePelicula</h5>
+<br />
+<br />
+<form action="/Pelicula/ConfirmarReserva" method="post">
+    @foreach (var p in Model)
+    {
+      <label>Sede:</label> @Html.DisplayFor(modelS => p.Sede.Nombre)
+      <label>Versi&oacute;n:</label> @Html.DisplayFor(modelS => p.Versione.Nombre)
+      
+        var dia="";
+        if(p.Lunes == true)
+        {
+           dia="Lunes";
+        }
+        if(p.Martes == true)
+        {
+            dia="Martes";
+        }
+        if(p.Miercoles == true)
+        {
+            dia="Miercoles";
+        }
+        if(p.Jueves == true)
+        {
+            dia="Jueves";
+        }
+        if(p.Viernes == true)
+        {
+            dia="Viernes";
+        }
+        if(p.Sabado == true)
+        {
+            dia="Sabado";
+        }
+        if(p.Domingo == true)
+        {
+            dia="Domingo";
+        }  
+  
+    <label>D&iacute;a:</label> @(dia)   
+    <label>Hora inicio:</label> @Html.DisplayFor(modelS => p.HoraInicio) 
+    <label>&nbsp;&nbsp;&nbsp;</label>
+    <button class="btn waves-effect waves-light" type="button" onclick="confirmarReserva(@p.IdCartelera)">
+        Reservar
+        <i class="material-icons right">send</i>
+    </button>
+    <br /><br />
+
+    }                              
+    <br />
+    <br />
+</form>

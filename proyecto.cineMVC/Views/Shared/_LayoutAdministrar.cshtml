@@ -7,6 +7,11 @@
     <link href="~/Content/materialize.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script>    
+        function confirmarReserva(IdCartelera) {            
+            window.location = "/Peliculas/ConfirmarReserva/" + escape(IdCartelera);
+        }
+    </script>
 </head>
 <body>
     <ul id="dropdown1" class="dropdown-content">

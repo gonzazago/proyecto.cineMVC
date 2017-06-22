@@ -1,0 +1,18 @@
+﻿@model IEnumerable<proyecto.Cine.Logica.Modelo.Pelicula>
+@{
+    ViewBag.Title = "ReservarPelicula";
+    Layout = "~/Views/Shared/_LayoutAdministrar.cshtml";
+}
+
+<h2>Reservar ON-LINE</h2>
+
+<h5>Pel&iacute;culas: </h5>
+<br />
+<br />
+    @foreach (var p in Model)
+    {
+      <li class="tab"><a class="active blue-text text-darken-2" href="/Peliculas/Pelicula/@Html.DisplayFor(modelS => p.IdPelicula)"> @Html.DisplayFor(modelS => p.Nombre) <label> </li>
+    }                                
+<br />
+<br />
+

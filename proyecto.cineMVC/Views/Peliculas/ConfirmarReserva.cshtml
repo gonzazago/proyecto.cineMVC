@@ -1,0 +1,92 @@
+﻿@model IEnumerable<proyecto.Cine.Logica.Modelo.Cartelera>
+@{
+    ViewBag.Title = "ReservarPelicula";
+    Layout = "~/Views/Shared/_LayoutAdministrar.cshtml";
+}
+
+<h2>Reservar ON-LINE - Confirmar reserva:</h2>
+
+<h5>Pel&iacute;cula: @ViewBag.NombrePelicula</h5>
+<br /> 
+<form action="/Reserva/Guardar" method="post">  
+    @foreach (var p in Model)
+    { 
+      string HoraInicio = p.HoraInicio.ToString()+":00:00";           
+      string FechaInicio = p.FechaInicio.ToString("yyyy-MM-dd");      
+      <label>Informaci&oacute;n:</label><br />
+      <label>Descripci&oacute;n: @Html.DisplayFor(modelS => p.Pelicula.Descripcion) | </label>           
+      <label>Duraci&oacute;n:  @Html.DisplayFor(modelS => p.Pelicula.Duracion) minutos | </label>        
+      <label>G&eacute;nero: @Html.DisplayFor(modelS => p.Pelicula.Genero.Nombre) | </label> 
+      <label>Calificaci&oacute;n: @Html.DisplayFor(modelS => p.Pelicula.Calificacione.Nombre) | </label>  <br /><br />
+  
+      <label>Funci&oacute;n:</label> <br /> 
+      <label>Sede: @Html.DisplayFor(modelS => p.Sede.Nombre) | </label>  
+      <label>Versi&oacute;n: @Html.DisplayFor(modelS => p.Versione.Nombre) | </label> 
+      
+        var dia="";
+        if(p.Lunes == true)
+        {
+           dia="Lunes";
+        }
+        if(p.Martes == true)
+        {
+            dia="Martes";
+        }
+        if(p.Miercoles == true)
+        {
+            dia="Miercoles";
+        }
+        if(p.Jueves == true)
+        {
+            dia="Jueves";
+        }
+        if(p.Viernes == true)
+        {
+            dia="Viernes";
+        }
+        if(p.Sabado == true)
+        {
+            dia="Sabado";
+        }
+        if(p.Domingo == true)
+        {
+            dia="Domingo";
+        }  
+  
+    <label>D&iacute;a: @(dia) | </label>
+    <label>Hora inicio: @Html.DisplayFor(modelS => p.HoraInicio) </label>  <br /><br />  
+    
+    <label>Importante: La reserva estar&aacute; vigente hasta 1hr antes de la funci&oacute;n elegida y deber&aacute; ser confirmada en el cine seleccionado.</label>
+    <br />
+    <hr />
+    <h5>Complete la siguiente informaci&oacute;n:</h5>
+        
+    <label>Cantidad de entradas: </label> <select class="browser-default" id="CantidadEntradas" name="CantidadEntradas">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                          </select> <br />
+
+    <label>Email:</label> <input id="Email" name="Email"/> <br /> 
+    <label>Confirmar email:</label> <input id="confirmarEmail"/> <br />
+    <label>Tipo documento:</label>  <select class="browser-default" id="IdTipoDocumento" name="IdTipoDocumento">
+                                                <option value="1">DNI</option>
+                                                <option value="2">LC</option>
+                                                <option value="3">Pasaporte</option>
+                                   </select> <br />   
+    <label>Nro. documento:</label> <input id="NumeroDocumento" name="NumeroDocumento"/> <br /><br />
+
+    <button class="btn waves-effect waves-light" type="submit">
+        Reservar
+        <i class="material-icons right">send</i>
+    </button>    
+    
+    <input type="hidden" id="IdSede" name="IdSede" value="@Html.DisplayFor(modelS => p.IdSede)" />
+    <input type="hidden" id="IdPelicula" name="IdPelicula" value="@Html.DisplayFor(modelS => p.IdPelicula)" />
+    <input type="hidden" id="IdVersion" name="IdVersion" value="@Html.DisplayFor(modelS => p.IdVersion)" />
+    <input type="hidden" id="FechaHoraInicio" name="FechaHoraInicio" value="@FechaInicio @HoraInicio" />  
+    }                              
+</form>

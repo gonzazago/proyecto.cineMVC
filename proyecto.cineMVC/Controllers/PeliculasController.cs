@@ -1,6 +1,6 @@
 ﻿using proyecto.Cine.DAL.Repositorio;
 using proyecto.Cine.Logica.Modelo;
-using proyecto.cineMVC.Models;
+//using proyecto.cineMVC.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -31,7 +31,7 @@ namespace proyecto.cineMVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult AgregarPelicula(PeliculaModel p)
+        public ActionResult AgregarPelicula(proyecto.cineMVC.Models.PeliculaModel p)
         {
             var file = Request.Files[0];
 
@@ -72,6 +72,48 @@ namespace proyecto.cineMVC.Controllers
                 }
            }
             return RedirectToAction("AgregarPelicula", "Peliculas");
+        }
+
+        public ActionResult Reserva()
+        {
+            PeliculaDALImple p = new PeliculaDALImple();
+            List<Pelicula> Peliculas = new List<Pelicula>();
+
+            Peliculas = p.listarPeliculas();
+
+            return View(Peliculas);
+        }
+
+        public ActionResult Pelicula(int id)
+        {
+            CarteleraDALImple c = new CarteleraDALImple();
+            List<Cartelera> Cartelera = new List<Cartelera>();
+
+            Cartelera = c.listarCarteleraPorPelicula(id);
+
+            if (Cartelera.Count == 0) // No hay funciones disponibles para la pelicula seleccionada
+            {
+                return RedirectToAction("../Administrar/administrar");
+            }
+            else
+            {
+                ViewBag.NombrePelicula = Cartelera[0].Pelicula.Nombre.ToString();
+
+                return View(Cartelera);
+            }
+
+        }
+
+        public ActionResult ConfirmarReserva(int id)
+        {
+            CarteleraDALImple c = new CarteleraDALImple();
+            List<Cartelera> Cartelera = new List<Cartelera>();
+
+            Cartelera = c.listarFuncion(id);
+
+            ViewBag.NombrePelicula = Cartelera[0].Pelicula.Nombre.ToString();
+
+            return View(Cartelera);
         }
     }
 }
