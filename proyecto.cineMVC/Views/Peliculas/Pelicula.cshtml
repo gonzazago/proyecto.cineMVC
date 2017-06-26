@@ -44,9 +44,35 @@
         {
             dia="Domingo";
         }  
-  
-    <label>D&iacute;a:</label> @(dia)   
-    <label>Hora inicio:</label> @Html.DisplayFor(modelS => p.HoraInicio) 
+    
+    <label>D&iacute;a:</label> @(dia)   <br />
+    <label>Horarios disponibles:</label> <select id="@p.IdCartelera" name="@p.IdCartelera" class="browser-default">
+                                            <option value="@p.HoraInicio:00">@p.HoraInicio:00</option>
+                                                
+                                            @{  
+                                                var flag=0;
+                                                double intervalo = 0.5;
+                                                double duracionPelicula = Convert.ToInt32(p.Pelicula.Duracion)/60; // Duracion en hs de la pelicula
+                                                double horario = Convert.ToInt32(p.HoraInicio); // Horario inicial de la pelicula
+        
+                                                while(flag == 0)
+                                                {   
+                                                    horario = horario + duracionPelicula + intervalo;                                                                                                                              
+                                                               
+                                                    if(horario > 24) {
+                                                        flag = 1;
+                                                    } else {
+                                                        if(horario % 1 == 0){ 
+                                                            <option value="@horario:00">@horario:00 </option> // Si es entero el horario sera "hh:00"           
+                                                        } else {
+                                                            <option value="@Math.Truncate(horario):30">@Math.Truncate(horario):30 </option> // Si tiene parte decimal => "hh:30"
+                                                        }
+                                                    }
+                                                }
+                                             }
+                                            
+                                            
+                                         </select>
     <label>&nbsp;&nbsp;&nbsp;</label>
     <button class="btn waves-effect waves-light" type="button" onclick="confirmarReserva(@p.IdCartelera)">
         Reservar

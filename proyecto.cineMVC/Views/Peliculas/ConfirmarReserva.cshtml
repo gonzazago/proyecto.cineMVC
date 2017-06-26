@@ -7,11 +7,12 @@
 <h2>Reservar ON-LINE - Confirmar reserva:</h2>
 
 <h5>Pel&iacute;cula: @ViewBag.NombrePelicula</h5>
+
 <br /> 
 <form action="/Reserva/Guardar" method="post">  
     @foreach (var p in Model)
     { 
-      string HoraInicio = p.HoraInicio.ToString()+":00:00";           
+      string HoraInicio = @ViewBag.Horario;           
       string FechaInicio = p.FechaInicio.ToString("yyyy-MM-dd");      
       <label>Informaci&oacute;n:</label><br />
       <label>Descripci&oacute;n: @Html.DisplayFor(modelS => p.Pelicula.Descripcion) | </label>           
@@ -54,7 +55,7 @@
         }  
   
     <label>D&iacute;a: @(dia) | </label>
-    <label>Hora inicio: @Html.DisplayFor(modelS => p.HoraInicio) </label>  <br /><br />  
+    <label>Hora inicio: @ViewBag.Horario </label>  <br /><br />  
     
     <label>Importante: La reserva estar&aacute; vigente hasta 1hr antes de la funci&oacute;n elegida y deber&aacute; ser confirmada en el cine seleccionado.</label>
     <br />

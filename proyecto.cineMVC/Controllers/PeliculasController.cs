@@ -104,7 +104,7 @@ namespace proyecto.cineMVC.Controllers
 
         }
 
-        public ActionResult ConfirmarReserva(int id)
+        public ActionResult ConfirmarReserva(int id, string horario)
         {
             CarteleraDALImple c = new CarteleraDALImple();
             List<Cartelera> Cartelera = new List<Cartelera>();
@@ -112,7 +112,10 @@ namespace proyecto.cineMVC.Controllers
             Cartelera = c.listarFuncion(id);
 
             ViewBag.NombrePelicula = Cartelera[0].Pelicula.Nombre.ToString();
-
+            String hs = horario.Substring(0, 2) + ":";
+            String mm = horario[2].ToString() + horario[3].ToString();
+            ViewBag.Horario = hs + mm;
+            
             return View(Cartelera);
         }
     }

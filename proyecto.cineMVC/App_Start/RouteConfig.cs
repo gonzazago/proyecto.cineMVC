@@ -18,6 +18,12 @@ namespace proyecto.cineMVC
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "ConfirmarReserva",
+                url: "{controller}/{action}/{id}/{horario}"
+                
+            );
         }
     }
 }

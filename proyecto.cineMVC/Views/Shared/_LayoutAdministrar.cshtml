@@ -6,11 +6,14 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <link href="~/Content/materialize.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script>    
-        function confirmarReserva(IdCartelera) {            
-            window.location = "/Peliculas/ConfirmarReserva/" + escape(IdCartelera);
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">    
+        <script type="text/javascript">    
+        function confirmarReserva(IdCartelera) {
+            var hh = $("#" + IdCartelera + " option:selected").text().split(":", 1);
+            var mm = $("#" + IdCartelera + " option:selected").text().substring(3);
+            window.location = "/Peliculas/ConfirmarReserva/" + IdCartelera + "/" + hh + mm;
         }
+
     </script>
 </head>
 <body>
@@ -39,7 +42,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
-
+    
 </body>
 </html>
 
