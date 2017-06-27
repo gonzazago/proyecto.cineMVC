@@ -1,0 +1,93 @@
+﻿@model proyecto.Cine.Logica.Modelo.Pelicula
+@{
+    ViewBag.Title = "editar";
+    Layout = "~/Views/Shared/_LayoutAdministrar.cshtml";
+    List<proyecto.Cine.Logica.Modelo.Genero> gn = ViewBag.generos;
+    List<proyecto.Cine.Logica.Modelo.Calificacione> cal = ViewBag.calificaciones;
+}
+
+<h2>Editar Pelicula</h2>
+
+<h2>AgregarPelicula</h2>
+<div class="row">
+    <form action="/Peliculas/editar" class="col s12" method="Post" enctype="multipart/form-data">
+        <fieldset>
+            <div class="row">
+                <div class="row">
+                    <div class="input-field col s6">
+                        @Html.HiddenFor(x => x.IdPelicula)
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="row">
+                    <div class="input-field col s6">
+                        @Html.LabelFor(x => x.Nombre) @Html.TextBoxFor(x => x.Nombre)
+                        @Html.ValidationMessageFor(x => x.Nombre)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="row">
+                    <div class="input-field col s6">
+                        @Html.LabelFor(x => x.Duracion) @Html.TextBoxFor(x => x.Duracion)
+                        @Html.ValidationMessageFor(x => x.Duracion)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="row">
+                    <div class="input-field col s6">
+                        @Html.LabelFor(x => x.Descripcion) @Html.TextBoxFor(x => x.Descripcion)
+                        @Html.ValidationMessageFor(x => x.Descripcion)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <select name="IdGenero" class="browser-default">
+                            <option name="IdGenero" value="" disabl selected>Seleccione el Genero</option>
+                            @foreach (var g in gn)
+                            {
+                                <option name="IdGenero" value="@g.IdGenero">@g.Nombre</option>
+                            }
+                        </select>
+                        @Html.ValidationMessageFor(x => x.IdGenero)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <select name="IdCalificacion" class="browser-default">
+                            <option name="IdCalificacion" value="" disabl selected>Seleccione el Genero</option>
+                            @foreach (var c in cal)
+                            {
+                                <option name="IdCalificacion" value="@c.IdCalificacion">@c.Nombre</option>
+                            }
+                        </select>
+                        @Html.ValidationMessageFor(x => x.IdCalificacion)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span>Imagen</span>
+                        <input name="Imagen" type="file">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                    </div>
+                </div>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit">
+                Guardar Cambios
+                <i class="material-icons right">send</i>
+            </button>
+        </fieldset>
+
+    </form>
+</div>
+
+

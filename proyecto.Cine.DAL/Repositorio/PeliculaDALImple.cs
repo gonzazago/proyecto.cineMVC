@@ -31,7 +31,7 @@ namespace proyecto.Cine.DAL.Repositorio
             ctx.SaveChanges();
         }
 
-        public Pelicula buscarPeliculas(int id)
+        public Pelicula buscarPeliculas(int? id)
         {
             return ctx.Peliculas.Find(id);
         }

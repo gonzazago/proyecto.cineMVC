@@ -12,7 +12,7 @@ namespace proyecto.Cine.Logica.Interfaces
         List<Genero> obtenerGeneros();
         List<Calificacione> obtnerClasificaciones();
         void guardarPeliculas(Pelicula p);
-        Pelicula buscarPeliculas(int id);
+        Pelicula buscarPeliculas(int? id);
         List<Pelicula> listarPeliculas();
         void borrarPelicula(int id);
         void editarPelicula(Pelicula p, int id);

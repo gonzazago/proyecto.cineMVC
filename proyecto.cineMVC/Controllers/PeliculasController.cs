@@ -73,5 +73,54 @@ namespace proyecto.cineMVC.Controllers
            }
             return RedirectToAction("AgregarPelicula", "Peliculas");
         }
+
+        public ActionResult editar(int? id)
+        {
+            List<Genero> generos = pMng.obtenerGeneros();
+            List<Calificacione> cal = pMng.obtnerClasificaciones();
+            Pelicula p = pMng.buscarPeliculas(id);
+            ViewBag.generos = generos;
+            ViewBag.calificaciones = cal;
+            return View(p);
+        }
+
+        [HttpPost]
+        public ActionResult editar(Pelicula pe)
+        {
+            var file = Request.Files[0];
+
+            List<Genero> generos = pMng.obtenerGeneros();
+            List<Calificacione> cal = pMng.obtnerClasificaciones();
+
+            ViewBag.generos = generos;
+            ViewBag.calificaciones = cal;
+
+          
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    if (file.ContentLength > 0)
+                    {
+                        string _filename = Path.GetFileName(file.FileName);
+                        string _patch = Path.Combine(Server.MapPath("~/UploadFiles"), _filename);
+                        file.SaveAs(_patch);
+                        pe.Imagen = _patch;
+                        pMng.editarPelicula(pe, pe.IdPelicula);
+                        TempData["Mjs"] = "La Sede " + pe.Nombre + " ha sido editada Correctamente";
+                        return RedirectToAction("Peliculas", "Peliculas");
+                    }
+
+                }
+                catch (Exception e)
+                {
+
+                    ViewBag.Message = "Error al subir el archivo";
+                }
+            }
+            return RedirectToAction("editar", "Peliculas");
+        }
     }
+
+    
 }

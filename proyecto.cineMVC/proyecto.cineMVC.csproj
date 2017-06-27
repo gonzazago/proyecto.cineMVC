@@ -175,7 +175,6 @@
     <Compile Include="Models\GeneroModel.cs" />
     <Compile Include="Models\PeliculaModel.cs" />
     <Compile Include="Models\ReservaModel.cs" />
-    <Compile Include="Models\Sede.cs" />
     <Compile Include="Models\SedeModel.cs" />
     <Compile Include="Models\TipoDocumentoModel.cs" />
     <Compile Include="Models\UsuarioModel.cs" />
@@ -207,6 +206,7 @@
     <Content Include="Views\Sedes\nuevaSede.cshtml" />
     <Content Include="Views\Sedes\editar.cshtml" />
     <Content Include="Views\Peliculas\AgregarPelicula.cshtml" />
+    <Content Include="Views\Peliculas\editar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
