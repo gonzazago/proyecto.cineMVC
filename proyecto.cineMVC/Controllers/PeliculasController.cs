@@ -95,8 +95,9 @@ namespace proyecto.cineMVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult editar(Pelicula pe)
+        public ActionResult editar(int id, Pelicula pe)
         {
+            pe.IdPelicula = id;
             var file = Request.Files[0];
 
             List<Genero> generos = pMng.obtenerGeneros();

@@ -28,6 +28,8 @@ namespace proyecto.cineMVC.Models
         public int IdGenero { get; set; }
 
         [Required(ErrorMessage = "Indicar la duracion")]
+        [Range(1, 90,
+        ErrorMessage = "La pelicula no puede durar mas de 90 minutos")]
         public int Duracion { get; set; }
         
         public DateTime FechaCarga { get; set; }
