@@ -16,12 +16,22 @@ namespace proyecto.cineMVC.Controllers
         // GET: Peliculas
         public ActionResult Peliculas()
         {
+            if (Session["logeado"] == null)
+            {
+                Session["url"] = Request.Url.AbsoluteUri;
+                return RedirectToAction("login", "Usuario");
+            }
             List<Pelicula> pel = pMng.listarPeliculas();
             return View(pel);
         }
 
         public ActionResult AgregarPelicula()
         {
+            if (Session["logeado"] == null)
+            {
+                Session["url"] = Request.Url.AbsoluteUri;
+                return RedirectToAction("login", "Usuario");
+            }
             List<Genero> generos = pMng.obtenerGeneros();
             List<Calificacione> cal = pMng.obtnerClasificaciones();
 

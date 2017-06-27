@@ -61,6 +61,7 @@
     <Compile Include="Interfaces\IReservaServicio.cs" />
     <Compile Include="Interfaces\IUsuariosServicios.cs" />
     <Compile Include="Interfaces\ISedeServicios.cs" />
+    <Compile Include="Interfaces\IVersionServicio.cs" />
     <Compile Include="Modelo\Calificacione.cs">
       <DependentUpon>CineDB.tt</DependentUpon>
     </Compile>

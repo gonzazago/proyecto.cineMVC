@@ -15,12 +15,22 @@ namespace proyecto.cineMVC.Controllers
         // GET: Sedes
         public ActionResult Sedes()
         {
+            if (Session["logeado"] == null)
+            {
+                Session["url"] = Request.Url.AbsoluteUri;
+                return RedirectToAction("login", "Usuario");
+            }
             List <Sede> sbd = sMng.listarSedes();
             
             return View(sbd);
         }
 
         public ActionResult nuevaSede() {
+            if (Session["logeado"] == null)
+            {
+                Session["url"] = Request.Url.AbsoluteUri;
+                return RedirectToAction("login", "Usuario");
+            }
             return View();
         }
 

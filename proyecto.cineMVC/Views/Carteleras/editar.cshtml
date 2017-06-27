@@ -1,0 +1,133 @@
+﻿@model proyecto.cineMVC.Models.CarteleraMetadata
+@{
+    ViewBag.Title = "Agregar Cartelera";
+    Layout = "~/Views/Shared/_LayoutAdministrar.cshtml";
+    List<proyecto.Cine.Logica.Modelo.Sede> sedes = ViewBag.sedes;
+    List<proyecto.Cine.Logica.Modelo.Pelicula> peliculas = ViewBag.peliculas;
+    List<proyecto.Cine.Logica.Modelo.Versione> versiones = ViewBag.versiones;
+    List<String> errores = ViewBag.errores;
+    DateTime fechaInicio = ViewBag.fechaInicio;
+    DateTime fechaFin = ViewBag.fechaFin;
+}
+
+<div class="row">
+    <div class="col s12 m10 offset-m1">
+        <div class="row">
+            <h5 class="center-align">Agregar cartelera</h5>
+        </div>
+
+        <form action="/Carteleras/editar?id=@Model.IdCartelera" method="Post">
+            <div class="row">
+                <div class="input-field">
+                    @Html.DropDownListFor(x => x.IdSede, new SelectList(sedes, "IdSede", "Nombre"), "Seleccione una sede", new { @class = "browser-default" })
+                    @Html.ValidationMessageFor(x => x.IdSede)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field">
+                    @Html.DropDownListFor(x => x.IdPelicula, new SelectList(peliculas, "IdPelicula", "Nombre"), "Seleccione una pelicula", new { @class = "browser-default" })
+                    @Html.ValidationMessageFor(x => x.IdPelicula)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field">
+                    @Html.DropDownListFor(x => x.IdVersion, new SelectList(versiones, "IdVersion", "Nombre"), "Seleccione una version", new { @class = "browser-default" })
+                    @Html.ValidationMessageFor(x => x.IdVersion)
+                </div>
+            </div>
+
+            <div class="row">
+                <html>
+                <div class="col s12 m6">
+                    <span><b>Hora de inicio</b></span>
+                    @Html.TextBoxFor(x => x.HoraInicio)
+                    @Html.ValidationMessageFor(x => x.HoraInicio)
+
+                </div>
+
+                <div class="col s12 m6">
+                    <span><b>Numero de sala</b></span>
+                    @Html.TextBoxFor(x => x.NumeroSala, new { type = "number" })
+                    @Html.ValidationMessageFor(x => x.NumeroSala)
+                </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12 m6">
+                <span><b>Fecha de inicio</b></span>
+                <input type="text" id="fechaInicioOriginal" value="@String.Format("{0:yyyy-MM-dd}", fechaInicio)" hidden />
+                @Html.TextBoxFor(x => x.FechaInicio, new { type = "date", @max = "2020-12-31"})
+                @Html.ValidationMessageFor(x => x.FechaInicio)
+            </div>
+
+            <div class="input-field col s12 m6">
+                <span><b>Fecha de finalizacion</b></span>
+                <input type="text" id="fechaFinOriginal" value="@String.Format("{0:yyyy-MM-dd}", fechaFin)" hidden />
+                @Html.TextBoxFor(x => x.FechaFin, new { type = "date", @max = "2020-12-31" })
+                @Html.ValidationMessageFor(x => x.FechaFin)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field">
+                <span><b>Seleccione los días en los que se proyectará la pelicula</b></span>
+                <div>
+                    @Html.CheckBoxFor(x => x.Lunes)
+                    @Html.LabelFor(x => x.Lunes)
+                </div>
+                <div>
+                    @Html.CheckBoxFor(x => x.Martes)
+                    @Html.LabelFor(x => x.Martes)
+                </div>
+                <div>
+                    @Html.CheckBoxFor(x => x.Miercoles)
+                    @Html.LabelFor(x => x.Miercoles)
+                </div>
+                <div>
+                    @Html.CheckBoxFor(x => x.Jueves)
+                    @Html.LabelFor(x => x.Jueves)
+                </div>
+                <div>
+                    @Html.CheckBoxFor(x => x.Viernes)
+                    @Html.LabelFor(x => x.Viernes)
+                </div>
+                <div>
+                    @Html.CheckBoxFor(x => x.Sabado)
+                    @Html.LabelFor(x => x.Sabado)
+                </div>
+                <div>
+                    @Html.CheckBoxFor(x => x.Domingo)
+                    @Html.LabelFor(x => x.Domingo)
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 m4 offset-m5">
+                <button class="btn waves-effect waves-light blue darken-2" type="submit">
+                    Enviar
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </div>
+    </form>
+
+    @if (errores != null && errores.Count > 0)
+    {
+        <div class="row">
+            <h5 class="red-text text-darken-4">Han ocurrido los siguientes errores</h5>
+            @foreach (var error in errores)
+            {
+                <div class="row">
+                    <span><b>@error</b></span>
+                </div>
+            }
+        </div>
+    }
+</div>
+</div>
+<script type="text/javascript" src="~/Scripts/carteleras/agregarCartelera.js"></script>
+<script type="text/javascript" src="~/Scripts/carteleras/editarCartelera.js"></script>
+

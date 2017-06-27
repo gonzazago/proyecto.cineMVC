@@ -71,6 +71,7 @@
     <Compile Include="Repositorio\ReservaDALImple.cs" />
     <Compile Include="Repositorio\SedeDALImple.cs" />
     <Compile Include="Repositorio\UsuarioDALImple.cs" />
+    <Compile Include="Repositorio\VersionDALImple.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="CineDB.edmx">
