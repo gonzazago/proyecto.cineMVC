@@ -6,7 +6,7 @@ using System.Web;
 
 namespace proyecto.cineMVC.Models
 {
-    [MetadataType(typeof(CarteleraMetadata))]
+    [MetadataType(typeof(Cartelera))]
     public partial class Cartelera
     {
     }

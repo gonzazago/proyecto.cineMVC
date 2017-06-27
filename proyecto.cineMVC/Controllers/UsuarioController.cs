@@ -23,7 +23,7 @@ namespace proyecto.cineMVC.Controllers
         [HttpPost]
         public ActionResult login(UsuarioModel u)
         {
-            string url = (string)Session["Url"];
+            string url = String.IsNullOrEmpty((string)Session["Url"]) ? "/Home" : (string)Session["Url"];
             Usuario usr = new Usuario();
             UsuarioDALImple usrMng = new UsuarioDALImple();
             usr.NombreUsuario = u.NombreUsuario;

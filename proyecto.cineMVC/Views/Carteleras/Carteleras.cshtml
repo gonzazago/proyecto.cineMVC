@@ -1,8 +1,52 @@
-﻿
+﻿@model proyecto.cineMVC.Models.Cartelera
 @{
     ViewBag.Title = "Carteleras";
     Layout = "~/Views/Shared/_LayoutAdministrar.cshtml";
+    List<proyecto.Cine.Logica.Modelo.Cartelera> carteleras = ViewBag.carteleras;
+    List<proyecto.Cine.Logica.Modelo.Pelicula> peliculas = ViewBag.peliculas;
+    List<proyecto.Cine.Logica.Modelo.Versione> versiones = ViewBag.versiones;
+    List<proyecto.Cine.Logica.Modelo.Sede> sedes = ViewBag.sedes;
 }
 
-<h2>Carteleras</h2>
-
+<div class="row">
+    <div class="col s12 m10 offset-m1">
+        <div class="row">
+            <h5 class="center-align">Carteleras</h5>
+        </div>
+        <div class="row">
+            <a class="btn btn-floating btn-large pulse right blue darken-2" href="/Carteleras/AgregarCartelera"><i class="material-icons">add</i></a>
+        </div>
+        <div class="row">
+            @foreach (var cartelera in carteleras)
+            {
+                <div class="col s12 m4">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">@sedes.Find(s => s.IdSede == cartelera.IdSede).Nombre</span>
+                            <p>
+                                <span><b>Pelicula: </b> @peliculas.Find(p => p.IdPelicula == cartelera.IdPelicula).Nombre</span>
+                            </p>
+                            <p>
+                                <span><b>Version: </b>@versiones.Find(v => v.IdVersion == cartelera.IdVersion).Nombre</span>
+                            </p>
+                            <p>
+                                <span><b>Sala: </b>@cartelera.NumeroSala</span>
+                            </p>
+                            <p>
+                                <span><b>Fecha inicio: </b> @String.Format("{0:d/M/yyyy}", cartelera.FechaInicio)</span>
+                            </p>
+                            <p>
+                                <span><b>Fecha fin: </b>@String.Format("{0:d/M/yyyy}", cartelera.FechaFin)</span>
+                            </p>
+                        </div>
+                        <div class="card-action">
+                            <a href="/Carteleras/editar?id=@cartelera.IdCartelera">Editar</a>
+                            <a class="red-text darken-1 borrar" href="/Carteleras/borrarCartelera?id=@cartelera.IdCartelera">Eliminar</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="~/Scripts/carteleras/listarCarteleras.js"></script>

@@ -2735,6 +2735,7 @@ $(document).ready(function(){
     };
 
     // Radio and Checkbox focus class
+    /*
     var radio_checkbox = 'input[type=radio], input[type=checkbox]';
     $(document).on('keyup.radio', radio_checkbox, function(e) {
       // TAB, check if tabbing to radio or checkbox.
@@ -2747,7 +2748,7 @@ $(document).ready(function(){
         });
         return;
       }
-    });
+    });*/
 
     // Textarea Auto Resize
     var hiddenDiv = $('.hiddendiv').first();
@@ -2970,7 +2971,7 @@ $(document).ready(function(){
 
           // Check for multiple type.
           if (type === 'multiple') {
-            options.append($('<li class="' + disabledClass + '"><img src="' + icon_url + '"' + classString + '><span><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
+           // options.append($('<li class="' + disabledClass + '"><img src="' + icon_url + '"' + classString + '><span><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
           } else {
             options.append($('<li class="' + disabledClass + optgroupClass + '"><img src="' + icon_url + '"' + classString + '><span>' + option.html() + '</span></li>'));
           }
@@ -2979,7 +2980,7 @@ $(document).ready(function(){
 
         // Check for multiple type.
         if (type === 'multiple') {
-          options.append($('<li class="' + disabledClass + '"><span><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
+         // options.append($('<li class="' + disabledClass + '"><span><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
         } else {
           options.append($('<li class="' + disabledClass + optgroupClass + '"><span>' + option.html() + '</span></li>'));
         }
@@ -3015,7 +3016,7 @@ $(document).ready(function(){
             var selected = true;
 
             if (multiple) {
-              $('input[type="checkbox"]', this).prop('checked', function(i, v) { return !v; });
+             // $('input[type="checkbox"]', this).prop('checked', function(i, v) { return !v; });
               selected = toggleEntryFromArray(valuesSelected, $(this).index(), $select);
               $newSelect.trigger('focus');
             } else {
