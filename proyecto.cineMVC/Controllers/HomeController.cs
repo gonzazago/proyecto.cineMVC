@@ -1,4 +1,6 @@
-﻿using proyecto.cineMVC.Models;
+﻿using proyecto.Cine.DAL.Repositorio;
+using proyecto.Cine.Logica.Modelo;
+using proyecto.cineMVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +14,13 @@ namespace proyecto.cineMVC.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            PeliculaDALImple p = new PeliculaDALImple();
+            List<Pelicula> Peliculas = new List<Pelicula>();
 
-            return View();
+            Peliculas = p.listarPeliculas();
+
+            return View(Peliculas);
+            //return View();
         }
         
 
