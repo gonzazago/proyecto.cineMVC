@@ -74,9 +74,13 @@
     <label>Email:</label> <input id="Email" name="Email"/> <br /> 
     <label>Confirmar email:</label> <input id="confirmarEmail"/> <br />
     <label>Tipo documento:</label>  <select class="browser-default" id="IdTipoDocumento" name="IdTipoDocumento">
-                                                <option value="1">DNI</option>
-                                                <option value="2">LC</option>
-                                                <option value="3">Pasaporte</option>
+                                        @{  var i = 1;    
+                                            foreach (var d in ViewBag.Documento)
+                                            {
+                                                <option value="@i">@d.Descripcion</option>
+                                                i++;
+                                            }   
+                                        }                                              
                                    </select> <br />   
     <label>Nro. documento:</label> <input id="NumeroDocumento" name="NumeroDocumento"/> <br /><br />
 

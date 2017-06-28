@@ -108,14 +108,20 @@ namespace proyecto.cineMVC.Controllers
         {
             CarteleraDALImple c = new CarteleraDALImple();
             List<Cartelera> Cartelera = new List<Cartelera>();
-
+            
             Cartelera = c.listarFuncion(id);
+
+            TiposDocumentoDALImple d = new TiposDocumentoDALImple();
+            List<TiposDocumento> Documento = new List<TiposDocumento>();
+
+            Documento = d.obtenerTiposDocumento();
 
             ViewBag.NombrePelicula = Cartelera[0].Pelicula.Nombre.ToString();
             String hs = horario.Substring(0, 2) + ":";
             String mm = horario[2].ToString() + horario[3].ToString();
             ViewBag.Horario = hs + mm;
-            
+
+            ViewBag.Documento = Documento;
             return View(Cartelera);
         }
     }
