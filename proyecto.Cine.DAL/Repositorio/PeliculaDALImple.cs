@@ -2,6 +2,7 @@
 using proyecto.Cine.Logica.Modelo;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,6 +41,19 @@ namespace proyecto.Cine.DAL.Repositorio
         {
             return ctx.Peliculas.ToList();
         }
+
+        public List<Pelicula> listarPeliculasYEstrenos()
+        {
+            // obtengo todas las carteleras que esten vigentes actualmente
+            List<Cartelera> carteleras = ctx.Carteleras.Where(carte => carte.FechaInicio <= EntityFunctions.AddDays(DateTime.Now, 30) && carte.FechaFin >= DateTime.Now).ToList();
+            List<Pelicula> peliculas = new List<Pelicula>();
+            foreach(var carte in carteleras)
+            {
+                peliculas.Add(carte.Pelicula);
+            }
+            return peliculas;
+        }
+
         public void borrarPelicula(int id)
         {
             var pelicula = ctx.Peliculas.Find(id);

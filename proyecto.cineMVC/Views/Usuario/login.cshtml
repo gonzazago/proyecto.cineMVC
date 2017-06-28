@@ -5,41 +5,46 @@
     Layout = "~/Views/Shared/_LayoutBase.cshtml";
 }
 
-<h2>Para poder ingresar debe Iniciar Sesion</h2>
-<span>
-    @if (TempData["Mensaje"] != "")
-    {
-        @TempData["Mensaje"];
-    }
-
-</span>
+<div class="row">
+    <h5 class="center-align">Para poder ingresar debe iniciar sesion</h5>
+</div>
 
 <div class="row">
-    <form action="/Usuario/login" class="col s12" method="Post">
-        <fieldset>
+    <span>
+        @if (TempData["Mensaje"] != "")
+        {
+            @TempData["Mensaje"];
+        }
 
+    </span>
+</div>
+
+<div class="row">
+    <form action="/Usuario/login" class="col s12 m6 offset-m3" method="Post">
             <div class="row">
                 <div class="row">
-                    <div class="input-field col s6">
-                        @Html.LabelFor(x => x.NombreUsuario) @Html.TextBoxFor(x => x.NombreUsuario)
+                    <div class="input-field">
+                        <label for="NombreUsuario">Nombre de usuario</label> @Html.TextBoxFor(x => x.NombreUsuario)
                         @Html.ValidationMessageFor(x => x.NombreUsuario)
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="row">
-                    <div class="input-field col s6">
+                    <div class="input-field">
                         @Html.LabelFor(x => x.Password) @Html.PasswordFor(x => x.Password)
                         @Html.ValidationMessageFor(x => x.Password)
                     </div>
                 </div>
             </div>
-            <button class="btn waves-effect waves-light" type="submit">
-                Iniciar Sesion
-                <i class="material-icons right">send</i>
-            </button>
-        </fieldset>
-
+            <div class="row">
+                <div class="col s12 m4 offset-m4">
+                    <button class="btn waves-effect waves-light green darken-2" type="submit">
+                        Iniciar Sesion
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </div>
     </form>
 
  </div>

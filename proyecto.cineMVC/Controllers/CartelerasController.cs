@@ -88,6 +88,11 @@ namespace proyecto.cineMVC.Controllers
             {
                 List<String> errores = new List<string>();
 
+                if(cartelera.FechaInicio > cartelera.FechaFin)
+                {
+                    errores.Add("La fecha de inicio no puede ser mayor a la fecha de finalizacion");
+                }
+
                 if (CarteleraValidador.existeSolapamientoDeSalas(cartelera))
                 {
                     errores.Add("Existe otra cartelera con misma Sede y Sala con solapamiento de fechas");
@@ -115,7 +120,12 @@ namespace proyecto.cineMVC.Controllers
             if (ModelState.IsValid)
             {
                 List<String> errores = new List<string>();
-                
+
+                if (cartelera.FechaInicio > cartelera.FechaFin)
+                {
+                    errores.Add("La fecha de inicio no puede ser mayor a la fecha de finalizacion");
+                }
+
                 if (CarteleraValidador.existeSolapamientoDeSalas(cartelera))
                 {
                     errores.Add("Existe otra cartelera con misma Sede y Sala con solapamiento de fechas");

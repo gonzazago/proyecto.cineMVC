@@ -4,44 +4,40 @@
     Layout = "~/Views/Shared/_LayoutAdministrar.cshtml";
 }
 
-<h2>Agregar nueva Sede</h2>
-
+<div class="row">
+    <h4 class="center-align">Agregar nueva sede</h4>
+</div>
 
 <div class="row">
-    <form action="/Sedes/nuevaSede" class="col s12" method="Post">
-        <fieldset>
-
-            <div class="row">
+    <div class="col s12 m6 offset-m3">
+        <form action="/Sedes/nuevaSede" class="col s12" method="Post">
                 <div class="row">
-                    <div class="input-field col s6">
+                    <div class="input-field">
                         @Html.LabelFor(x => x.Nombre) @Html.TextBoxFor(x => x.Nombre)
                         @Html.ValidationMessageFor(x => x.Nombre)
                     </div>
                 </div>
-            </div>
-            <div class="row">
                 <div class="row">
-                    <div class="input-field col s6">
+                    <div class="input-field">
                         @Html.LabelFor(x => x.Direccion) @Html.TextBoxFor(x => x.Direccion)
                         @Html.ValidationMessageFor(x => x.Direccion)
                     </div>
                 </div>
-            </div>
-            <div class="row">
                 <div class="row">
-                    <div class="input-field col s6">
-                        @Html.LabelFor(x => x.PrecioGeneral) @Html.TextBoxFor(x => x.PrecioGeneral)
+                    <div class="input-field">
+                        <label for="PrecioGeneral">Precio general</label> @Html.TextBoxFor(x => x.PrecioGeneral)
                         @Html.ValidationMessageFor(x => x.PrecioGeneral)
                     </div>
                 </div>
-            </div>
-            <button class="btn waves-effect waves-light" type="submit">
-                Agregar Sede
-                <i class="material-icons right">send</i>
-            </button>
-        </fieldset>
-
-    </form>
-
+                <div class="row">
+                    <div class="col s12 m4 offset-m4">
+                        <button class="btn waves-effect waves-light blue darken-1" type="submit">
+                            Agregar Sede
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </div>
+        </form>
+    </div>
 </div>
 

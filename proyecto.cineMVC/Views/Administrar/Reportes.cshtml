@@ -2,7 +2,82 @@
 @{
     ViewBag.Title = "Reportes";
     Layout = "~/Views/Shared/_LayoutAdministrar.cshtml";
+    List<proyecto.Cine.Logica.Modelo.Reserva> reservas = ViewBag.reservas;
+    List<String> errores = ViewBag.errores;
 }
 
-<h2>Reportes</h2>
+@functions
+{
+    int calcularPrecioEntradas(int cantidad, int precio)
+    {
+        return cantidad * precio;
+    }
+}
 
+<div class="row">
+    <h4 class="center-align">Reportes de reservas</h4>
+</div>
+
+<div class="row">
+    <form action="/Administrar/obtenerReportes" method="get">
+        <div class="col s12 m6 offset-m3">
+            <label>Desde</label>
+            <input type="date" id="desde" name="desde" />
+        </div>
+        <div class="col s12 m6 offset-m3">
+            <label>Hasta</label>
+            <input type="date" id="hasta" name="hasta" />
+        </div>
+        <div class="row">
+            <div class="col s12 m4 offset-m5">
+                <button class="btn waves-effect waves-light blue darken-2" type="submit">
+                    Enviar
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="row">
+    @if (errores != null && errores.Count > 0)
+    {
+        <div class="row">
+            <h5 class="red-text text-darken-4">Han ocurrido los siguientes errores</h5>
+            @foreach (var error in errores)
+            {
+                <div class="row">
+                    <span><b>@error</b></span>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+<div class="row">
+    <table>
+        <thead>
+            <tr>
+                <th>Sede</th>
+                <th>Pelicula</th>
+                <th>Version</th>
+                <th>Hora</th>
+                <th>Cant. Entradas</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var re in reservas)
+            {
+                <tr>
+                    <td>@re.Sede.Nombre</td>
+                    <td>@re.Pelicula.Nombre</td>
+                    <td>@re.Versione.Nombre</td>
+                    <td>@re.FechaHoraInicio</td>
+                    <td>@re.CantidadEntradas</td>
+                    <td>@calcularPrecioEntradas(re.CantidadEntradas, (int)Math.Ceiling(re.Sede.PrecioGeneral))</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

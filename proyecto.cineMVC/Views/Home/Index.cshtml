@@ -1,168 +1,44 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutBase.cshtml";
+    List<proyecto.Cine.Logica.Modelo.Pelicula> peliculas = ViewBag.peliculas;
 }
 
-<h2><center>Bienvenidos a</h2>
-<h3><center>Cine UNLaM</h3>
+@functions{
+    string obtenerImagen(String imagenString)
+    {
+        int indice = imagenString.IndexOf("\\UploadFiles\\");
+        int max = imagenString.Length - indice;
+        return imagenString.Substring(indice, max);
+    }
+}
 
-        <ul class="nav nav-tabs">
-          <li class="active"><a data-toggle="tab" href="#home">En Cartelera</a></li>
-          <li><a data-toggle="tab" href="#menu1">Estrenos</a></li>
-        </ul>
-
-        <div class="tab-content">
-          <div id="home" class="tab-pane fade in active">
-            <h3>En Cartelera</h3>
-            <select class="form-control" id="sel1">
-                <option>Seleccioná una sede</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-            </select>
-            <hr>
-            <div class="row">
-              <div class="col-md-4">
-                <div class="thumbnail">
-                  <a href="/w3images/lights.jpg">
-                    <img src="/imagenes/guardianes.jpg" alt="Lights" style="width:70%">
-                    <div class="caption">
-                      <p>Lorem ipsum...</p>
-                    </div>
-                  </a>
+<div class="row">
+    <h4 class="center-align">Bienvenido a CINELAM</h4>
+</div>
+<div class="row">
+    <h5>Peliculas</h5>
+</div>
+<div class="divider">
+</div>
+<div class="row">
+    @foreach (var peli in peliculas)
+    {
+        <div class="col s12 m4">
+            <div class="card">
+                <div class="card-image" style="height: 400px; overflow: hidden;">
+                    <img src="@obtenerImagen(peli.Imagen)">
+                    <span class="card-title">@peli.Nombre</span>
                 </div>
-              </div>
-              <div class="col-md-4">
-                <div class="thumbnail">
-                  <a href="/w3images/nature.jpg">
-                    <img src="/imagenes/rey arturo.jpg" alt="Nature" style="width:70%">
-                    <div class="caption">
-                      <p>Lorem ipsum...</p>
-                    </div>
-                  </a>
+                <div class="card-content">
+                    <p><b>Descripcion: </b> <span>@peli.Descripcion</span></p>
+                    <p><b>Genero: </b>@peli.Genero.Nombre</p>
+                    <p><b>Clasificacion: </b>@peli.Calificacione.Nombre</p>
                 </div>
-              </div>
-              <div class="col-md-4">
-                <div class="thumbnail">
-                  <a href="/w3images/fjords.jpg">
-                    <img src="/imagenes/oz.jpg" alt="Fjords" style="width:70%">
-                    <div class="caption">
-                      <p>Lorem ipsum...</p>
-                    </div>
-                  </a>
+                <div class="card-action">
+                    <a class="green-text text-darken-2" href="/Pelicula/Reservar?id=@peli.IdPelicula">Reservar</a>
                 </div>
-              </div>
             </div>
-            <div class="row">
-              <div class="col-md-4">
-                <div class="thumbnail">
-                  <a href="/w3images/lights.jpg">
-                    <img src="/w3images/lights.jpg" alt="Lights" style="width:100%">
-                    <div class="caption">
-                      <p>Lorem ipsum...</p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="thumbnail">
-                  <a href="/w3images/nature.jpg">
-                    <img src="/w3images/nature.jpg" alt="Nature" style="width:100%">
-                    <div class="caption">
-                      <p>Lorem ipsum...</p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="thumbnail">
-                  <a href="/w3images/fjords.jpg">
-                    <img src="/w3images/fjords.jpg" alt="Fjords" style="width:100%">
-                    <div class="caption">
-                      <p>Lorem ipsum...</p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div id="menu1" class="tab-pane fade">
-            <h3>Estrenos</h3>
-            <select class="form-control" id="sel1">
-                <option>Seleccioná una sede</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-            </select>
-            <hr>
-            <div class="row">
-              <div class="col-md-4">
-                <div class="thumbnail">
-                  <a href="/w3images/lights.jpg">
-                    <img src="/imagenes/guardianes.jpg" alt="Lights" style="width:70%">
-                    <div class="caption">
-                      <p>Lorem ipsum...</p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="thumbnail">
-                  <a href="/w3images/nature.jpg">
-                    <img src="/imagenes/rey arturo.jpg" alt="Nature" style="width:70%">
-                    <div class="caption">
-                      <p>Lorem ipsum...</p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="thumbnail">
-                  <a href="/w3images/fjords.jpg">
-                    <img src="/imagenes/oz.jpg" alt="Fjords" style="width:70%">
-                    <div class="caption">
-                      <p>Lorem ipsum...</p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-4">
-                <div class="thumbnail">
-                  <a href="/w3images/lights.jpg">
-                    <img src="/w3images/lights.jpg" alt="Lights" style="width:100%">
-                    <div class="caption">
-                      <p>Lorem ipsum...</p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="thumbnail">
-                  <a href="/w3images/nature.jpg">
-                    <img src="/w3images/nature.jpg" alt="Nature" style="width:100%">
-                    <div class="caption">
-                      <p>Lorem ipsum...</p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="thumbnail">
-                  <a href="/w3images/fjords.jpg">
-                    <img src="/w3images/fjords.jpg" alt="Fjords" style="width:100%">
-                    <div class="caption">
-                      <p>Lorem ipsum...</p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          </div>
         </div>
-          
-<a href="/Usuario/login"> Agregar Usuario</a>
+    }
+</div>

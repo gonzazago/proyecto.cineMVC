@@ -4,7 +4,9 @@
     Layout = "~/Views/Shared/_LayoutAdministrar.cshtml";
 }
 
-<h2>Sedes</h2>
+<div class="row">
+    <h4 class="center-align">Sedes</h4>
+</div>
 <span>
     @if (TempData["Mjs"] != "")
     {
@@ -12,7 +14,7 @@
     }
     <br />
 </span>
-<a href="/Sedes/nuevaSede" class ="waves-effect waves-light btn"><i class="material-icons right">add</i>Nueva Sede</a>
+<a href="/Sedes/nuevaSede" class ="waves-effect waves-light btn blue darken-2"><i class="material-icons right">add</i>Nueva Sede</a>
 <table class="highlight">
         <tr>
             <th>@Html.DisplayNameFor(model => model.Nombre)</th>

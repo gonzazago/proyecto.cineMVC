@@ -1,4 +1,5 @@
-﻿using System;
+﻿using proyecto.Cine.Logica.Modelo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace proyecto.Cine.Logica.Interfaces
 {
     public interface IReservaServicio
     {
+        List<Reserva> obtenerReservasEntreDosFechas(DateTime desde, DateTime hasta);
     }
 }

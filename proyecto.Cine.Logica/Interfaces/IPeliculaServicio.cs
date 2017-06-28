@@ -14,6 +14,7 @@ namespace proyecto.Cine.Logica.Interfaces
         void guardarPeliculas(Pelicula p);
         Pelicula buscarPeliculas(int? id);
         List<Pelicula> listarPeliculas();
+        List<Pelicula> listarPeliculasYEstrenos();
         void borrarPelicula(int id);
         void editarPelicula(Pelicula p, int id);
     }

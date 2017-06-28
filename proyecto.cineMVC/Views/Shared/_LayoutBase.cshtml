@@ -5,14 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <link href="~/Content/materialize.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-
-    <div class="container">
-        @RenderBody()
-    </div>
+    <main>
+        <nav class="green darken-2">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="/Home/Index" class="brand-logo">CINELAM</a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="/Administrar/administrar">Administrar</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            @RenderBody()
+        </div>
+    </main>
+    <footer class="page-footer green darken-2">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">CINELAM</h5>
+                    <p class="grey-text text-lighten-4">Av. Florencio Varela 1903</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Alumnos</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="#!">Thea Fernando</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Zago Gonzalo</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Roldan Roman</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Chazarreta Diego</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2017
+                <a class="grey-text text-lighten-4 right" href="#!">Programacion web 3</a>
+            </div>
+        </div>
+    </footer>
 
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
