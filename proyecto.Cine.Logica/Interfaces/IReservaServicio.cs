@@ -10,5 +10,6 @@ namespace proyecto.Cine.Logica.Interfaces
     public interface IReservaServicio
     {
         List<Reserva> obtenerReservasEntreDosFechas(DateTime desde, DateTime hasta);
+        void guardarReserva(Reserva reserva);
     }
 }

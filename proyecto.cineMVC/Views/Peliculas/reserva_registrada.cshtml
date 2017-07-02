@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "reserva_registrada";
+    Layout = "~/Views/Shared/_LayoutBase.cshtml";
+    int cantidad = ViewBag.cantidad_entradas;
+    String total = ViewBag.total.ToString();
+}
+
+<div class="row">
+    <h4 class="center-align">Reserva realizada con exito!</h4>
+</div>
+<div class="row">
+    <h5>Detalles:</h5>
+    <p>
+        <span><b>Cantidad de entradas: </b>@cantidad</span>
+    </p>
+    <p>
+        <span><b>Precio total: </b>@total</span>
+    </p>
+</div>
+<div class="row">
+    <p>
+        Recuerda que la reserva estará vigente hasta 1hs antes de la función. Además deberas confirmarla en el cine seleccionado.
+    </p>
+    <p>
+        Click <a href="/Home/Index">aquí</a> para volver al inicio.
+    </p>
+</div>

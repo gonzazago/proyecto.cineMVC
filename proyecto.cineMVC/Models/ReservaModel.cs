@@ -34,7 +34,7 @@ namespace proyecto.cineMVC.Models
         [Required(ErrorMessage = "Debe ingresar su numero de documento")]
         public string NumeroDocumento { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Debe seleccionar cantidad entradas")]
         [Range(1, 10,
         ErrorMessage = "No puedes reservar mas de 10 entradas a la vez")]
         public int CantidadEntradas { get; set; }

@@ -16,5 +16,12 @@ namespace proyecto.Cine.DAL.Repositorio
         {
             return ctx.Reservas.Where(res => (res.FechaHoraInicio > desde && res.FechaHoraInicio < hasta)).ToList();
         }
+
+        public void guardarReserva(Reserva reserva)
+        {
+            reserva.FechaCarga = DateTime.Now;
+            ctx.Reservas.Add(reserva);
+            ctx.SaveChanges();
+        }
     }
 }

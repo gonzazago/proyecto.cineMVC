@@ -69,6 +69,23 @@
                     @Html.ValidationMessageFor(x => x.NumeroDocumento)
                 </div>
             </div>
+
+            <div class="row">
+                @Html.HiddenFor(x => x.FechaHoraInicio)
+                @Html.HiddenFor(x => x.IdPelicula)
+                @Html.HiddenFor(x => x.IdVersion)
+                @Html.HiddenFor(x => x.IdSede)
+            </div>
+
+            <div class="row">
+                <div class="col s12 offset-m3">
+                    <button class="btn waves-effect waves-light green darken-2" type="submit">
+                        Enviar
+                        <i class="material-icons right">send</i>
+                    </button>
+                    @Html.Partial("~/Views/Shared/_Cancelar.cshtml")
+                </div>
+            </div>
         </form>
     </div>
 </div>

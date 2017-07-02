@@ -214,6 +214,7 @@
     <Content Include="Views\Peliculas\reservar.cshtml" />
     <Content Include="Views\Shared\_Cancelar.cshtml" />
     <Content Include="Views\Peliculas\reservar_pelicula.cshtml" />
+    <Content Include="Views\Peliculas\reserva_registrada.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -16,6 +16,7 @@ namespace proyecto.cineMVC.Controllers
         VersionDALImple vMng = new VersionDALImple();
         SedeDALImple sMng = new SedeDALImple();
         TiposDeDocumentoDALImple tdMng = new TiposDeDocumentoDALImple();
+        ReservaDALImple rMng = new ReservaDALImple();
         // GET: Peliculas
         public ActionResult Peliculas()
         {
@@ -159,17 +160,53 @@ namespace proyecto.cineMVC.Controllers
             String duracion = Request.Form["duracion_pelicula"];
 
             ReservaModel reserva = new ReservaModel();
-            reserva.IdPelicula = id;
-            reserva.IdSede = Int32.Parse(sede);
-            reserva.IdVersion = Int32.Parse(version);
-            reserva.FechaHoraInicio = fecha;
-            reserva.Pelicula = pMng.buscarPeliculas(id);
-            reserva.Sede = sMng.buscarSede(Int32.Parse(sede));
-            reserva.Versione = vMng.obtenerVersionPorId(Int32.Parse(version));
+
+            if(TempData["reserva"] == null)
+            {
+                reserva.IdPelicula = id;
+                reserva.IdSede = Int32.Parse(sede);
+                reserva.IdVersion = Int32.Parse(version);
+                reserva.FechaHoraInicio = fecha;
+                reserva.Pelicula = pMng.buscarPeliculas(id);
+                reserva.Sede = sMng.buscarSede(Int32.Parse(sede));
+                reserva.Versione = vMng.obtenerVersionPorId(Int32.Parse(version));
+            }
+            else
+            {
+                reserva = (ReservaModel) TempData["reserva"];
+            }
+            
 
             ViewBag.tipos_documento = tdMng.obtenerTiposDeDocumentos();
 
             return View(reserva);
+        }
+
+        [HttpPost]
+        public ActionResult confirmar_reserva(ReservaModel reserva)
+        {
+            if (ModelState.IsValid)
+            {
+                Sede sede = sMng.buscarSede(reserva.IdSede);
+                rMng.guardarReserva(GenerarReservaDesdeModel(reserva));
+                TempData["reserva"] = "ok";
+                TempData["cantidad_entradas"] = reserva.CantidadEntradas;
+                TempData["total"] = sede.PrecioGeneral * reserva.CantidadEntradas;
+                return RedirectToAction("reserva_registrada");
+            }
+            TempData["reserva"] = reserva;
+            return RedirectToAction("reservar_pelicula");
+        }
+
+        public ActionResult reserva_registrada()
+        {
+            if(TempData["reserva"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            ViewBag.cantidad_entradas = TempData["cantidad_entradas"];
+            ViewBag.total = TempData["total"];
+            return View();
         }
 
         private static DateTime UnixTimeStampToDateTime(long unixTimeStamp)
@@ -177,6 +214,25 @@ namespace proyecto.cineMVC.Controllers
             System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
             dtDateTime = dtDateTime.AddMilliseconds(unixTimeStamp).ToLocalTime();
             return dtDateTime;
+        }
+
+        private Cine.Logica.Modelo.Reserva GenerarReservaDesdeModel(ReservaModel reserva)
+        {
+            Cine.Logica.Modelo.Reserva res = new Cine.Logica.Modelo.Reserva();
+            res.IdSede = reserva.IdSede;
+            res.IdVersion = reserva.IdVersion;
+            res.IdPelicula = reserva.IdPelicula;
+            res.FechaHoraInicio = reserva.FechaHoraInicio;
+            res.Email = reserva.Email;
+            res.IdTipoDocumento = reserva.IdTipoDocumento;
+            res.NumeroDocumento = reserva.NumeroDocumento;
+            res.CantidadEntradas = reserva.CantidadEntradas;
+            res.Pelicula = reserva.Pelicula;
+            res.Sede = reserva.Sede;
+            res.TiposDocumento = reserva.TiposDocumento;
+            res.Versione = reserva.Versione;
+
+            return res;
         }
 
     }
