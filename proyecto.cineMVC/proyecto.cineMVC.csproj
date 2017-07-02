@@ -125,6 +125,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\material-icons.css" />
     <Content Include="Content\materialize.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -218,6 +219,9 @@
     <Content Include="Views\Peliculas\editar.cshtml" />
     <Content Include="Views\Carteleras\AgregarCartelera.cshtml" />
     <Content Include="Views\Carteleras\editar.cshtml" />
+    <Content Include="Views\Peliculas\reservar.cshtml" />
+    <Content Include="Views\Peliculas\Prueba.cshtml" />
+    <Content Include="Views\Shared\_Cancelar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

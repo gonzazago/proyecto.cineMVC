@@ -57,13 +57,32 @@ namespace proyecto.cineMVC.Controllers
 
         public ActionResult borrarCartelera(int id)
         {
+            if (Session["logeado"] == null)
+            {
+                Session["url"] = Request.Url.AbsoluteUri;
+                return RedirectToAction("login", "Usuario");
+            }
+
             cMng.borrarCartelera(id);
             return RedirectToAction("Carteleras", "Carteleras");
         }
 
         public ActionResult editar(int id)
         {
-            CarteleraMetadata cartelera = generarCartelera(cMng.obtenerCarteleraPorId(id));
+            if (Session["logeado"] == null)
+            {
+                Session["url"] = Request.Url.AbsoluteUri;
+                return RedirectToAction("login", "Usuario");
+            }
+
+            Cine.Logica.Modelo.Cartelera carte = cMng.obtenerCarteleraPorId(id);
+
+            if(carte == null)
+            {
+                return RedirectToAction("administrar", "Administrar");
+            }
+
+            CarteleraMetadata cartelera = generarCartelera(carte);
 
             List<Sede> sedes = sMng.listarSedes();
             List<Pelicula> peliculas = pMng.listarPeliculas();

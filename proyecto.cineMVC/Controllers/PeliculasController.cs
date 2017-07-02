@@ -131,6 +131,16 @@ namespace proyecto.cineMVC.Controllers
             }
             return RedirectToAction("editar", "Peliculas");
         }
+
+        public ActionResult reservar(int id)
+        {
+            return View();
+        }
+
+        public ActionResult reservar(int id, String prueba)
+        {
+            return View("Prueba");
+        }
     }
 
     

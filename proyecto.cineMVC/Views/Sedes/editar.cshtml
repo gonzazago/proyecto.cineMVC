@@ -4,13 +4,55 @@
     Layout = "~/Views/Shared/_LayoutAdministrar.cshtml";
 }
 
-<h2>Editar Sede</h2>
+<div class="row">
+    <h4 class="center-align">Editar sede</h4>
+</div>
 
 <div class="row">
-    <form action="/Sedes/editar" class="col s12" method="Post">
-        <fieldset>
+    <div class="col s12 m6 offset-m3">
+            <form action="/Sedes/editar" class="col s12" method="Post">
+                <div class="row">
+                    <div class="input-field">
+                        @Html.HiddenFor(x => x.IdSede)
+                    </div>
+                </div>
 
-            <div class="row">
+                <div class="row">
+                    <div class="input-field">
+                        @Html.LabelFor(x => x.Nombre) @Html.TextBoxFor(x => x.Nombre)
+                        @Html.ValidationMessageFor(x => x.Nombre)
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field">
+                        @Html.LabelFor(x => x.Direccion) @Html.TextBoxFor(x => x.Direccion)
+                        @Html.ValidationMessageFor(x => x.Direccion)
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field">
+                        @Html.LabelFor(x => x.PrecioGeneral) @Html.TextBoxFor(x => x.PrecioGeneral)
+                        @Html.ValidationMessageFor(x => x.PrecioGeneral)
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col s12 offset-m2">
+                        <button class="btn waves-effect waves-light blue darken-2" type="submit">
+                            Guardar
+                            <i class="material-icons right">send</i>
+                        </button>
+                        @Html.Partial("~/Views/Shared/_Cancelar.cshtml")
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+
+            @*<div class="row">
                 <div class="row">
                     <div class="input-field col s6">
                         @Html.HiddenFor(x => x.IdSede)
@@ -44,10 +86,6 @@
             <button class="btn waves-effect waves-light" type="submit">
                 Guardar Cambios
                 <i class="material-icons right">send</i>
-            </button>
-        </fieldset>
-
-    </form>
-
+            </button>*@
 </div>
 
