@@ -59,6 +59,7 @@
     <Compile Include="Interfaces\ICarteleraServicio.cs" />
     <Compile Include="Interfaces\IPeliculaServicio.cs" />
     <Compile Include="Interfaces\IReservaServicio.cs" />
+    <Compile Include="Interfaces\ITiposDeDocumento.cs" />
     <Compile Include="Interfaces\IUsuariosServicios.cs" />
     <Compile Include="Interfaces\ISedeServicios.cs" />
     <Compile Include="Interfaces\IVersionServicio.cs" />

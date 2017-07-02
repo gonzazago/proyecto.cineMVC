@@ -1,0 +1,74 @@
+﻿@model proyecto.cineMVC.Models.ReservaModel
+@{
+    ViewBag.Title = "reservar_pelicula";
+    Layout = "~/Views/Shared/_LayoutBase.cshtml";
+    List<proyecto.Cine.Logica.Modelo.TiposDocumento> documentos = ViewBag.tipos_documento;
+}
+
+<div class="row">
+    <h4 class="center-align">Reserva de entradas</h4>
+</div>
+
+<div class="row">
+    <div class="col s12 m8 offset-m2">
+        <div class="row">
+            <div class="col s12">
+                <div class="card-panel">
+                    <div class="row">
+                        <div class="col s12 m8">
+                            <p><b>Pelicula: </b> @Model.Pelicula.Nombre</p>
+                            <p><b>Descripcion: </b></p>
+                            <p><b>Genero: </b> @Model.Pelicula.Genero.Nombre</p>
+                            <p><b>Clasificación: </b> @Model.Pelicula.Calificacione.Nombre</p>
+                            <p><b>Precio: </b> @Model.Sede.PrecioGeneral</p>
+                        </div>
+                        <div class="col s12 m4">
+                            <p><b>Version: </b> @Model.Versione.Nombre</p>
+                            <p><b>Sede: </b @Model.Sede.Nombre></p>
+                            <p><b>Fecha: </b> @Model.FechaHoraInicio</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form action="/Peliculas/confirmar_reserva" method="Post">
+            <div class="row">
+                <div class="input-field col s12 m8">
+                    @Html.TextBoxFor(x => x.Email, new { @type = "email" })
+                    @Html.LabelFor(x => x.Email)
+                    @Html.ValidationMessageFor(x => x.Email)
+                </div>
+
+                <div class="input-field col s12 m4">
+                    @Html.DropDownListFor(x => x.CantidadEntradas, new List<SelectListItem>
+                        {
+                            new SelectListItem { Text = "1", Value = "1"},
+                            new SelectListItem { Text = "2", Value = "2"},
+                            new SelectListItem { Text = "3", Value = "3"},
+                            new SelectListItem { Text = "4", Value = "4"},
+                            new SelectListItem { Text = "5", Value = "5"},
+                            new SelectListItem { Text = "6", Value = "6"},
+                            new SelectListItem { Text = "7", Value = "7"},
+                            new SelectListItem { Text = "8", Value = "8"},
+                            new SelectListItem { Text = "9", Value = "9"},
+                            new SelectListItem { Text = "10", Value = "10"},
+                        }, "Cantidad entradas", new { @class = "browser-default" })
+                    @Html.ValidationMessageFor(x => x.CantidadEntradas)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12 m4">
+                    @Html.DropDownListFor(x => x.IdTipoDocumento, new SelectList(documentos, "IdTipoDocumento", "Descripcion"), "Tipo documento", new { @class = "browser-default" })
+                    @Html.ValidationMessageFor(x => x.IdTipoDocumento)
+                </div>
+
+                <div class="input-field col s12 m8">
+                    @Html.TextBoxFor(x => x.NumeroDocumento)
+                    @Html.LabelFor(x => x.NumeroDocumento, "Numero de documento")
+                    @Html.ValidationMessageFor(x => x.NumeroDocumento)
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

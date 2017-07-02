@@ -13,6 +13,9 @@ namespace proyecto.cineMVC.Controllers
     public class PeliculasController : Controller
     {
         PeliculaDALImple pMng = new PeliculaDALImple();
+        VersionDALImple vMng = new VersionDALImple();
+        SedeDALImple sMng = new SedeDALImple();
+        TiposDeDocumentoDALImple tdMng = new TiposDeDocumentoDALImple();
         // GET: Peliculas
         public ActionResult Peliculas()
         {
@@ -134,13 +137,48 @@ namespace proyecto.cineMVC.Controllers
 
         public ActionResult reservar(int id)
         {
+            Pelicula peli = pMng.buscarPeliculas(id);
+            if(peli == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            List<Versione> versiones = vMng.obtenerVersionesDeUnaPelicula(id).ToList();
+
+            ViewBag.versiones = versiones;
+            ViewBag.pelicula = peli;
             return View();
         }
 
-        public ActionResult reservar(int id, String prueba)
+        [HttpPost]
+        public ActionResult reservar_pelicula(int id)
         {
-            return View("Prueba");
+            String version = Request.Form["version"];
+            String sede = Request.Form["sede"];
+            long fecha_aux = (long)Convert.ToDouble(Request.Form["hora_fecha"]);
+            DateTime fecha = UnixTimeStampToDateTime(fecha_aux);
+            String duracion = Request.Form["duracion_pelicula"];
+
+            ReservaModel reserva = new ReservaModel();
+            reserva.IdPelicula = id;
+            reserva.IdSede = Int32.Parse(sede);
+            reserva.IdVersion = Int32.Parse(version);
+            reserva.FechaHoraInicio = fecha;
+            reserva.Pelicula = pMng.buscarPeliculas(id);
+            reserva.Sede = sMng.buscarSede(Int32.Parse(sede));
+            reserva.Versione = vMng.obtenerVersionPorId(Int32.Parse(version));
+
+            ViewBag.tipos_documento = tdMng.obtenerTiposDeDocumentos();
+
+            return View(reserva);
         }
+
+        private static DateTime UnixTimeStampToDateTime(long unixTimeStamp)
+        {
+            System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
+            dtDateTime = dtDateTime.AddMilliseconds(unixTimeStamp).ToLocalTime();
+            return dtDateTime;
+        }
+
     }
 
     

@@ -14,6 +14,7 @@ namespace proyecto.Cine.Logica.Interfaces
         Sede buscarSede(int? id);
         void editarSede(Sede s, int id);
         void eliminarSede(int id);
+        List<Sede> listarSedesPorPeliculaYVersion(int idPelicula, int idVersion);
 
     }
 }

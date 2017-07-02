@@ -87,5 +87,10 @@ namespace proyecto.Cine.DAL.Repositorio
 
             return carteleras;
         }
+
+        public Cartelera obtenerCarteleraPorSedeYPeliculaYVersion(int idSede, int idPelicula, int idVersion)
+        {
+            return ctx.Carteleras.Where(car => car.IdSede == idSede && car.IdPelicula == idPelicula && car.IdVersion == idVersion).FirstOrDefault();
+        }
     }
 }

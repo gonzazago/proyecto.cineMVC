@@ -1,8 +1,72 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "reservar";
     Layout = "~/Views/Shared/_LayoutBase.cshtml";
+    proyecto.Cine.Logica.Modelo.Pelicula pelicula = ViewBag.pelicula;
+    List<proyecto.Cine.Logica.Modelo.Versione> versiones = ViewBag.versiones;
 }
 
-<h2>reservar</h2>
+<div class="row">
+    <h4 class="center-align">Reservar entradas para @pelicula.Nombre</h4>
+</div>
 
+<div class="row">
+    <div class="col s10 m8 offset-m2">
+        <form action="/peliculas/reservar_pelicula?id=@pelicula.IdPelicula" method="post" name="formulario_reserva" id="formulario_reserva">
+            <div class="row">
+                <select id="version" name="version" class="browser-default">
+                    <option value="" selected disabled>Seleccione una version</option>
+                    @foreach (var version in versiones)
+                    {
+                        <option value="@version.IdVersion">@version.Nombre</option>
+                    }
+                </select>
+            </div>
+
+            <div class="row">
+                <select id="sede" name="sede" class="browser-default" disabled>
+                    <option value="" selected disabled>Seleccione una sede</option>
+                </select>
+            </div>
+
+            <div class="row">
+                <select id="dia" name="dia" class="browser-default" disabled>
+                    <option value="" selected disabled>Seleccione un dia</option>
+                </select>
+            </div>
+
+            <div class="row">
+                <select id="hora" name="hora" class="browser-default" disabled>
+                    <option value="" selected disabled>Seleccione un horario</option>
+                </select>
+            </div>
+
+            <div hidden>
+                <input type="text" value="@pelicula.IdPelicula" id="idPelicula" name="id_pelicula" />
+                <input type="text" value="@pelicula.Duracion" id="duracionPelicula" name="duracion_pelicula" />
+                <input type="text" value="" id="horaYFecha" name="hora_fecha" />
+            </div>
+
+            <div class="row">
+                <div class="col s12 m4 offset-m2">
+                    <button class="btn waves-effect waves-light green darken-2 right" type="button" id="enviar">
+                        Continuar
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+                <div class="col s12 m4">
+                    @Html.Partial("~/Views/Shared/_Cancelar.cshtml")
+                </div>
+            </div>
+        </form>
+        
+    </div>
+</div>
+<div class="row" id="errores_container" hidden>
+    <div class="col s10 m8 offset-m2">
+        <h5 class="center-align red-text darken-2">Error</h5>
+        <div class="row" id="errores">
+
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/reserva/reserva.js"></script>

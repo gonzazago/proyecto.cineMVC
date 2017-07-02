@@ -123,40 +123,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\material-icons.css" />
     <Content Include="Content\materialize.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="fonts\Material-Design-Icons.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="fonts\Material-Design-Icons.eot" />
-    <Content Include="fonts\Material-Design-Icons.ttf" />
-    <Content Include="fonts\Material-Design-Icons.woff" />
-    <Content Include="fonts\Material-Design-Icons.woff2" />
-    <Content Include="fonts\Roboto-Bold.eot" />
-    <Content Include="fonts\Roboto-Bold.ttf" />
-    <Content Include="fonts\Roboto-Bold.woff" />
-    <Content Include="fonts\Roboto-Bold.woff2" />
-    <Content Include="fonts\Roboto-Light.eot" />
-    <Content Include="fonts\Roboto-Light.ttf" />
-    <Content Include="fonts\Roboto-Light.woff" />
-    <Content Include="fonts\Roboto-Light.woff2" />
-    <Content Include="fonts\Roboto-Medium.eot" />
-    <Content Include="fonts\Roboto-Medium.ttf" />
-    <Content Include="fonts\Roboto-Medium.woff" />
-    <Content Include="fonts\Roboto-Medium.woff2" />
-    <Content Include="fonts\Roboto-Regular.eot" />
-    <Content Include="fonts\Roboto-Regular.ttf" />
-    <Content Include="fonts\Roboto-Regular.woff" />
-    <Content Include="fonts\Roboto-Regular.woff2" />
-    <Content Include="fonts\Roboto-Thin.eot" />
-    <Content Include="fonts\Roboto-Thin.ttf" />
-    <Content Include="fonts\Roboto-Thin.woff" />
-    <Content Include="fonts\Roboto-Thin.woff2" />
+    <Content Include="fonts\roboto\Roboto-Bold.woff" />
+    <Content Include="fonts\roboto\Roboto-Bold.woff2" />
+    <Content Include="fonts\roboto\Roboto-Light.woff" />
+    <Content Include="fonts\roboto\Roboto-Light.woff2" />
+    <Content Include="fonts\roboto\Roboto-Medium.woff" />
+    <Content Include="fonts\roboto\Roboto-Medium.woff2" />
+    <Content Include="fonts\roboto\Roboto-Regular.woff" />
+    <Content Include="fonts\roboto\Roboto-Regular.woff2" />
+    <Content Include="fonts\roboto\Roboto-Thin.woff" />
+    <Content Include="fonts\roboto\Roboto-Thin.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\MaterialIcons-Regular.ttf" />
+    <Content Include="fonts\MaterialIcons-Regular.woff" />
+    <Content Include="fonts\MaterialIcons-Regular.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\carteleras\agregarCartelera.js" />
     <Content Include="Scripts\carteleras\editarCartelera.js" />
@@ -164,11 +151,13 @@
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\materialize.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\reserva\reserva.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdministrarController.cs" />
+    <Compile Include="Controllers\ApiController.cs" />
     <Compile Include="Controllers\CartelerasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PeliculasController.cs" />
@@ -178,6 +167,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\api\DiasYHorarioRespuesta.cs" />
+    <Compile Include="Models\api\SedesRespuesta.cs" />
+    <Compile Include="Models\api\VersionesRespuesta.cs" />
     <Compile Include="Models\Cartelera.cs" />
     <Compile Include="Models\CarteleraMetadata.cs" />
     <Compile Include="Models\ClasificacionesModel.cs" />
@@ -220,8 +212,8 @@
     <Content Include="Views\Carteleras\AgregarCartelera.cshtml" />
     <Content Include="Views\Carteleras\editar.cshtml" />
     <Content Include="Views\Peliculas\reservar.cshtml" />
-    <Content Include="Views\Peliculas\Prueba.cshtml" />
     <Content Include="Views\Shared\_Cancelar.cshtml" />
+    <Content Include="Views\Peliculas\reservar_pelicula.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -232,6 +224,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="UploadFiles\" />
+    <Folder Include="Views\Api\" />
     <Folder Include="Views\Reserva\" />
   </ItemGroup>
   <ItemGroup>

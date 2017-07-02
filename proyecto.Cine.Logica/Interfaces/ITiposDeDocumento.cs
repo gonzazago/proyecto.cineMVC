@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace proyecto.Cine.Logica.Interfaces
 {
-    public interface IVersionServicio
+    public interface ITiposDeDocumento
     {
-        List<Versione> listarVersiones();
-        HashSet<Versione> obtenerVersionesDeUnaPelicula(int id);
-        Versione obtenerVersionPorId(int id);
+        List<TiposDocumento> obtenerTiposDeDocumentos();
     }
 }

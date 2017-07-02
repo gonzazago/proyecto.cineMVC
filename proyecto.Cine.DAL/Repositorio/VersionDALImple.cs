@@ -17,5 +17,22 @@ namespace proyecto.Cine.DAL.Repositorio
             List<Versione> versiones = ctx.Versiones.ToList();
             return versiones;
         }
+
+        public HashSet<Versione> obtenerVersionesDeUnaPelicula(int id)
+        {
+            List<Cartelera> carteleras = ctx.Carteleras.Where(car => car.IdPelicula == id).ToList();
+            HashSet<Versione> versiones = new HashSet<Versione>();
+            foreach(var carte in carteleras)
+            {
+                versiones.Add(carte.Versione);
+            }
+
+            return versiones;
+        }
+
+        public Versione obtenerVersionPorId(int id)
+        {
+            return ctx.Versiones.Find(id);
+        }
     }
 }

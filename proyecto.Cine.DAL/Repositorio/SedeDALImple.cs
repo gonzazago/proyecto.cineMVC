@@ -51,7 +51,20 @@ namespace proyecto.Cine.DAL.Repositorio
             }
             
         }
-        
+
+        public List<Sede> listarSedesPorPeliculaYVersion(int idPelicula, int idVersion)
+        {
+            List<Cartelera> carteleras = ctx.Carteleras.Where(car => car.IdPelicula == idPelicula && car.IdVersion == idVersion).ToList();
+            HashSet<Sede> sedes = new HashSet<Sede>();
+            foreach(var carte in carteleras)
+            {
+                sedes.Add(carte.Sede);
+            }
+
+            return sedes.ToList();
+        }
+
+
 
     }
 }

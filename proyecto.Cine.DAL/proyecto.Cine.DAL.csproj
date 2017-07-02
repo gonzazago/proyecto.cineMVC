@@ -70,6 +70,7 @@
     <Compile Include="Repositorio\PeliculaDALImple.cs" />
     <Compile Include="Repositorio\ReservaDALImple.cs" />
     <Compile Include="Repositorio\SedeDALImple.cs" />
+    <Compile Include="Repositorio\TiposDeDocumentoDALImple.cs" />
     <Compile Include="Repositorio\UsuarioDALImple.cs" />
     <Compile Include="Repositorio\VersionDALImple.cs" />
   </ItemGroup>

@@ -44,14 +44,16 @@ namespace proyecto.Cine.DAL.Repositorio
 
         public List<Pelicula> listarPeliculasYEstrenos()
         {
-            // obtengo todas las carteleras que esten vigentes actualmente
+            // obtengo todas las carteleras que esten vigentes actualmente y las que tengan fecha de estreno hasta 30 dias a partir del dia de la fecha.
             List<Cartelera> carteleras = ctx.Carteleras.Where(carte => carte.FechaInicio <= EntityFunctions.AddDays(DateTime.Now, 30) && carte.FechaFin >= DateTime.Now).ToList();
-            List<Pelicula> peliculas = new List<Pelicula>();
+
+            // Las meto en un hashset para evitar duplicados
+            HashSet<Pelicula> peliculas = new HashSet<Pelicula>();
             foreach(var carte in carteleras)
             {
                 peliculas.Add(carte.Pelicula);
             }
-            return peliculas;
+            return peliculas.ToList();
         }
 
         public void borrarPelicula(int id)

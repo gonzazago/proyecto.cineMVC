@@ -17,5 +17,6 @@ namespace proyecto.Cine.Logica.Interfaces
         List<Cartelera> obtenerCartelerasDeUnaSede(int numeroDeSede);
         List<Cartelera> obtenerCartelerasPorSedeSalaYFecha(int idSede, int numeroDeSala, DateTime fechaInicio, DateTime fechaFin);
         List<Cartelera> obtenerCartelerasPorPeliculaVersionYFecha(int idSede, int idPelicula, int idVersion, DateTime fechaInicio, DateTime fechaFin);
+        Cartelera obtenerCarteleraPorSedeYPeliculaYVersion(int idSede, int idPelicula, int idVersion);
     }
 }
